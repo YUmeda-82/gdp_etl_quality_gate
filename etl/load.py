@@ -10,6 +10,8 @@ spark = SparkSession.builder\
        .config("spark.hadoop.fs.azure.account.auth.type.devstoreaccount1.blob.core.windows.net", "SharedKey")\
        .config("spark.hadoop.fs.azure.account.key.devstoreaccount1.blob.core.windows.net", "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVW3Hqy8+VG7b")\
        .config("spark.hadoop.fs.azure.storage.emulator.enabled", "true")\
+       .config("spark.hadoop.fs.azure.storage.emulator.account.name", "devstoreaccount1")\
+       .config("spark.hadoop.fs.azure.storage.emulator.rest.endpoint", "http://127.0.0.1:10000")\
        .getOrCreate()
 
 
@@ -26,7 +28,7 @@ def load_to_bronze(rw_data: list[dict]) -> None:
         df.write\
         .format("parquet")\
         .mode("overwrite")\
-        .save("abfs://bronze@devstoreaccount1/gdp_raw")
+        .save("wasbs://bronze@devstoreaccount1/gdp_raw")\
         #.save("data/bronze/gdp_raw")
     except Exception as e:
         print(f"Errror loading bronze layer: {e}")
