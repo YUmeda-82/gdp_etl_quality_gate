@@ -6,3 +6,5 @@ services:
     ports:
       - "10000:10000"
     command: azurite-blob --blobHost 0.0.0.0
+    volumes:
+      - ./data/azurite:/data
