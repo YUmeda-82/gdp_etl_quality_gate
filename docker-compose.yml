@@ -8,3 +8,15 @@ services:
     command: azurite-blob --blobHost 0.0.0.0
     volumes:
       - ./data/azurite:/data
+
+  spark-notebook:
+    image: jupyter/pyspark-notebook
+    container_name: spark-notebook
+    ports:
+      - "8888:8888"
+    environment:
+      - AZURE_STORAGE_CONNECTION_STRING=${AZURE_STORAGE_CONNECTION_STRING}
+    volumes:
+      - ./notebooks:/home/joyvan/work
+    depends_on:
+      - azurite
