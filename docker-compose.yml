@@ -17,6 +17,6 @@ services:
     environment:
       - AZURE_STORAGE_CONNECTION_STRING=${AZURE_STORAGE_CONNECTION_STRING}
     volumes:
-      - ./notebooks:/home/joyvan/work
+      - ./notebooks:/home/jovyan/work
     depends_on:
       - azurite
