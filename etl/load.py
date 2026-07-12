@@ -11,9 +11,9 @@ def create_table_bronze_gdp(rw_data: list[dict], spark: SparkSession) -> None:
     """
     try:
         df = spark.createDataFrame(rw_data)
-        df.write \
-            .format("parquet") \
-            .mode("overwrite") \
+        df.write\
+            .format("parquet")\
+            .mode("overwrite")\
             .save("wasbs://bronze@devstoreaccount1/gdp_raw")
     except Exception as e:
         print(f"Error loading bronze layer: {e}")

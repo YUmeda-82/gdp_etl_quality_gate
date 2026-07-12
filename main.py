@@ -7,7 +7,7 @@ if __name__ == "__main__":
     print(f"Records extracted: {len(rw)}")
 
     print("Loading bronze table to storage...")
-    create_table_bronze_gdp(rw, spark)  # passa o spark
+    create_table_bronze_gdp(rw, spark)#passing spar
 
     print("Loading silver table to storage...")
     create_table_silver_gdp(spark)
