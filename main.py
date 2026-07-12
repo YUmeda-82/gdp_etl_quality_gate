@@ -1,5 +1,6 @@
 from etl.extract import fetch_gdp_per_capita
-from etl.load import load_to_bronze
+from etl.load import create_table_bronze_gdp, spark
+from etl.transform import create_table_silver_gdp
 
 if __name__ == "__main__":
     print("Accessing World Bank API...")
@@ -7,7 +8,10 @@ if __name__ == "__main__":
 
     print(f"Records extracted: {len(rw)}")
 
-    print("Loading table to storage...")
-    load_to_bronze(rw)
+    print("Loading bronze table to storage...")
+    create_table_bronze_gdp(rw)
+
+    print("Loading silver table to storage...")
+    create_table_silver_gdp(spark)
 
     print("Done!")

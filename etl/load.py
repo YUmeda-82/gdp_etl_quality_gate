@@ -15,7 +15,7 @@ spark = SparkSession.builder\
        .getOrCreate()
 
 
-def load_to_bronze(rw_data: list[dict]) -> None:
+def create_table_bronze_gdp(rw_data: list[dict]) -> None:
     """
     Converts list of dictionaries from the extract.py file to Spark df 
     and persists as parquet in the Azurite bronze layer.
