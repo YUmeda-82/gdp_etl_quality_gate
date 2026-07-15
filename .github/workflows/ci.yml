@@ -1,0 +1,25 @@
+name: Data CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12.3"
+
+      - name: Install dependencies
+        run: pip install ruff black mypy
+
+      - name: Run quality gate
+        run: make quality
