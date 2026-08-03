@@ -1,3 +1,4 @@
+from azure.core.exceptions import AzureError
 from pyspark.sql import DataFrame, SparkSession
 
 
@@ -22,7 +23,9 @@ def create_table_silver_gdp(spark: SparkSession) -> DataFrame:
         df_silver.write.format("parquet").mode("overwrite").save(
             "wasbs://silver@devstoreaccount1/gdp_treated"
         )
-    except Exception as e:
-        print(f"Error loading silver layer: {e}")
+    except AzureError as e:
+        print(f"Azure storage error: {e}")
+    except Exception as e:  # noqa: BLE001
+        print(f"Unexpected error loading silver layer: {e}")
 
     return df_silver
