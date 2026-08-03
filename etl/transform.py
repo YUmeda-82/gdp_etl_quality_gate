@@ -1,4 +1,5 @@
-from pyspark.sql import SparkSession, DataFrame
+from pyspark.sql import DataFrame, SparkSession
+
 
 def create_table_silver_gdp(spark: SparkSession) -> DataFrame:
     """
@@ -18,10 +19,9 @@ def create_table_silver_gdp(spark: SparkSession) -> DataFrame:
                                      ,year DESC""")
 
     try:
-        df_silver.write\
-            .format("parquet")\
-            .mode("overwrite")\
-            .save("wasbs://silver@devstoreaccount1/gdp_treated")
+        df_silver.write.format("parquet").mode("overwrite").save(
+            "wasbs://silver@devstoreaccount1/gdp_treated"
+        )
     except Exception as e:
         print(f"Error loading silver layer: {e}")
 
