@@ -1,3 +1,4 @@
 pyspark
 python-dotenv
 requests
+types-requests
