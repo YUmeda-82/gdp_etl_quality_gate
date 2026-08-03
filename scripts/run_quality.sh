@@ -3,6 +3,7 @@ set -e
 
 echo "Importing dependencies..."
 
+pip install -r requirements.txt
 pip install ruff black mypy
 
 echo "Staring CI pipe..."
