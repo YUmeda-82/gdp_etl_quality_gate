@@ -1,7 +1,6 @@
 from delta import configure_spark_with_delta_pip
 from pyspark.sql import SparkSession
 
-
 HADOOP_AZURE_JAR = (
     "/home/yumeda/.ivy2.5.2/cache/"
     "org.apache.hadoop/hadoop-azure/jars/"
