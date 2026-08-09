@@ -16,8 +16,7 @@ def get_spark_session() -> SparkSession:
     """
 
     builder = (
-        SparkSession.builder
-        .appName("gdp_etl_quality_gate")
+        SparkSession.builder.appName("gdp_etl_quality_gate")
         .config("spark.jars", HADOOP_AZURE_JAR)
         .config(
             "spark.hadoop.fs.azure.account.auth.type.devstoreaccount1.blob.core.windows.net",
