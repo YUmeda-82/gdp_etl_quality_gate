@@ -20,7 +20,7 @@ def create_table_silver_gdp(spark: SparkSession) -> DataFrame:
                                      ,year DESC""")
 
     try:
-        df_silver.write.format("parquet").mode("overwrite").save(
+        df_silver.write.format("delta").mode("overwrite").save(
             "wasbs://silver@devstoreaccount1/gdp_treated"
         )
     except AzureError as e:
