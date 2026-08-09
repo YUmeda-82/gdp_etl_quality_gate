@@ -12,7 +12,7 @@ def create_table_bronze_gdp(rw_data: list[dict], spark: SparkSession) -> None:
     """
     try:
         df = spark.createDataFrame(rw_data)
-        df.write.format("parquet").mode("overwrite").save(
+        df.write.format("delta").mode("overwrite").save(
             "wasbs://bronze@devstoreaccount1/gdp_raw"
         )
     except AzureError as e:

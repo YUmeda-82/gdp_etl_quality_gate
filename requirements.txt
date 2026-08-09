@@ -2,3 +2,4 @@ pyspark
 python-dotenv
 requests
 types-requests
+delta-spark==4.1.0
